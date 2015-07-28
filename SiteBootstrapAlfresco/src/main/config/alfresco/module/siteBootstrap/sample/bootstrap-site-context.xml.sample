@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+
+<!--
+
+PUT THIS FILE IN 'SHARED/CLASSES/ALFRESCO/EXTENSION' FOLDER (WITHOUT THE EXTENSION .SAMPLE)
+
+-->
+
+<beans>
+
+	<!-- 
+	For importing whole site :
+	
+	- Put an unique ID of bean (instead of 'patch.siteLoadPatch.swsdp')
+	- Put an unique value for the property 'id' (instead of 'patch.siteLoadPatch.swsdp')
+	- Set true/false for 'disabled' 
+	- Set value for property 'siteName' as the site short name (instead of 'swsdp')
+	- Set (or not (= suppress the entry key 'users')) the user(s) to import
+	- Set (or not (= suppress the entry key 'people')) the people to import
+	- Set (or not (= suppress the entry key 'groups')) the group(s) to set for the site
+	- Set (or not (= suppress the entry key 'contents')) the content(s) to import for the site
+	-->
+	
+    <bean id="patch.siteLoadPatch.swsdp" class="org.alfresco.repo.admin.patch.impl.SiteLoadPatch" parent="basePatch">
+        <property name="id"><value>patch.siteLoadPatch.swsdp</value></property>
+        <property name="description"><value>patch.siteLoadPatch.description</value></property>
+        <property name="disabled"><value>false</value></property>
+        <property name="dependsOn" >
+            <list>
+                <ref bean="patch.updateDmPermissions" />
+            </list>
+        </property>
+        <property name="spacesBootstrap" ref="siteLoadBootstrap-Spaces" />
+        <property name="usersBootstrap" ref="siteLoadBootstrap-Users" />
+        <property name="siteService" ref="siteService" />
+        <property name="authorityService" ref="authorityService" />
+        <property name="behaviourFilter" ref="policyBehaviourFilter" />
+        <property name="siteName">
+            <value>swsdp</value>
+        </property>
+        <property name="bootstrapViews">
+            <map>
+                <entry key="users">
+                    <props>
+                        <prop key="location">alfresco/Users.acp</prop>
+                    </props>
+                </entry>
+                <entry key="people">
+                    <props>
+                        <prop key="location">alfresco/People.acp</prop>
+                    </props>
+                </entry>
+                <entry key="groups">
+                    <props>
+                        <prop key="location">alfresco/Groups.txt</prop>
+                    </props>
+                </entry>
+                <entry key="contents">
+                    <props>
+                        <prop key="location">alfresco/Contents.acp</prop>
+                    </props>
+                </entry>
+            </map>
+        </property>
+    </bean>
+    
+</beans>
