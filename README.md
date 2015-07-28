@@ -1,13 +1,13 @@
 # SiteBootstrapAlfresco
 
 ## Description
-This plugin allow to import a site creation on Alfresco startup but not only on alfresco installation or upgrade (like the "Sample: Web Site Design Project" site).
-The creation used the patch process in order to not execute it several times.
+This plugin allows to import a site creation on Alfresco startup but not only on alfresco installation or upgrade (like the "Sample: Web Site Design Project" site).
+The creation uses the patch process in order to not execute it several times.
 
 This plugin allows to create one or more site(s) and for each site:
--  Create and import user(s) / group(s)
+-  Create and import some user(s) / group(s)
 -  Set user(s) on group(s)
--  Import site content
+-  Import the site content
 
 The plugin includes a sample in the folder "src\main\config\alfresco\module\siteBootstrap\sample"
 
